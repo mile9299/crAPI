@@ -1,8 +1,8 @@
-# Default values for crapi.
+# Default values for capi.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-jwtSecret: crapi
+jwtSecret: capi
 enableLog4j: false
 enableShellInjection: true
 imagePullPolicy: Always
@@ -16,55 +16,55 @@ waitForK8sResources:
   imagePullPolicy: IfNotPresent
 
 web:
-  name: crapi-web
+  name: capi-web
   image: crapi/crapi-web
   replicaCount: 1
   port: 80
   sslPort: 443
   service:
-    name: crapi-web
+    name: capi-web
     labels:
-      app: crapi-web
+      app: capi-web
     nodePort: 30080
     sslNodePort: 30443
   config:
-    name: crapi-web-configmap
+    name: capi-web-configmap
     labels:
-      app: crapi-web
+      app: capi-web
   resources:
     limits:
       cpu: "500m"
     requests:
       cpu: 256m
   deploymentLabels:
-    app: crapi-web
+    app: capi-web
   podLabels:
-    app: crapi-web
+    app: capi-web
   deploymentSelectorMatchLabels:
-    app: crapi-web
+    app: capi-web
   serviceSelectorLabels:
-    app: crapi-web
+    app: capi-web
 
 identity:
-  name: crapi-identity
+  name: capi-identity
   image: crapi/crapi-identity
   port: 8080
   replicaCount: 1
   service:
-    name: crapi-identity
+    name: capi-identity
     labels:
-      app: crapi-identity
+      app: capi-identity
   jwtKeySecret:
     name: jwt-key-secret
     file: keys/jwks.json
     labels:
-      app: crapi-identity
+      app: capi-identity
   config:
-    name: crapi-identity-configmap
+    name: capi-identity-configmap
     labels:
-      app: crapi-identity
+      app: capi-identity
     postgresDbDriver: postgresql
-    appName: "crapi-identity"
+    appName: "capi-identity"
     mailhogDomain: "example.com"
     smtpHost: "smtp.example.com"
     smtpPort: 587
@@ -84,27 +84,27 @@ identity:
     requests:
       cpu: 256m
   deploymentLabels:
-    app: crapi-identity
+    app: capi-identity
   podLabels:
-    app: crapi-identity
+    app: capi-identity
   deploymentSelectorMatchLabels:
-    app: crapi-identity
+    app: capi-identity
   serviceSelectorLabels:
-    app: crapi-identity
+    app: capi-identity
 
 community:
-  name: crapi-community
+  name: capi-community
   image: crapi/crapi-community
   port: 8087
   replicaCount: 1
   service:
-    name: crapi-community
+    name: capi-community
     labels:
-      app: crapi-community
+      app: capi-community
   config:
-    name: crapi-community-configmap
+    name: capi-community-configmap
     labels:
-      app: crapi-community
+      app: capi-community
     postgresDbDriver: postgres
     mongoDbDriver: mongodb
   resources:
@@ -113,53 +113,53 @@ community:
     requests:
       cpu: 256m
   deploymentLabels:
-    app: crapi-community
+    app: capi-community
   podLabels:
-    app: crapi-community
+    app: capi-community
   deploymentSelectorMatchLabels:
-    app: crapi-community
+    app: capi-community
   serviceSelectorLabels:
-    app: crapi-community
+    app: capi-community
 
 workshop:
-  name: crapi-workshop
+  name: capi-workshop
   image: crapi/crapi-workshop
   port: 8000
   replicaCount: 1
   service:
-    name: crapi-workshop
+    name: capi-workshop
     labels:
-      app: crapi-workshop
+      app: capi-workshop
   config:
-    name: crapi-workshop-configmap
+    name: capi-workshop-configmap
     labels:
-      app: crapi-workshop
+      app: capi-workshop
     postgresDbDriver: postgres
     mongoDbDriver: mongodb
-    secretKey: crapi
+    secretKey: capi
   resources:
     limits:
       cpu: "256m"
     requests:
       cpu: 256m
   deploymentLabels:
-    app: crapi-workshop
+    app: capi-workshop
   podLabels:
-    app: crapi-workshop
+    app: capi-workshop
   deploymentSelectorMatchLabels:
-    app: crapi-workshop
+    app: capi-workshop
   serviceSelectorLabels:
-    app: crapi-workshop
+    app: capi-workshop
 
 mailhog:
   name: mailhog
-  image: crapi/mailhog
+  image: capi/mailhog
   webPort: 8025
   smtpPort: 1025
   replicaCount: 1
   minReadySeconds: 10
   progressDeadlineSeconds: 600
-  namespace: crapi
+  namespace: capi
   smtpService:
     name: mailhog
     labels:
@@ -208,9 +208,9 @@ mongodb:
     labels:
       app: mongodb
     mongoUser: admin
-    mongoPassword: crapisecretpassword
-    mongoDbName: crapi
-    mongoUri: "admin:crapisecretpassword@mongodb:27017"
+    mongoPassword: capisecretpassword
+    mongoDbName: capi
+    mongoUri: "admin:capisecretpassword@mongodb:27017"
   pvc:
     name: mongodb-pv-claim
     labels:
@@ -243,8 +243,8 @@ postgresdb:
     labels:
       app: postgresdb
     postgresUser: admin
-    postgresPassword: crapisecretpassword
-    postgresDbName: crapi
+    postgresPassword: capisecretpassword
+    postgresDbName: capi
   pvc:
     name: postgres-pv-claim
     labels:
@@ -263,7 +263,7 @@ postgresdb:
 
 apiGatewayService:
   name: gateway-service
-  image: crapi/gateway-service
+  image: capi/gateway-service
   port: 443
   replicaCount: 1
   service:
