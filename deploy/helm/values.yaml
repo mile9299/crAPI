@@ -153,7 +153,7 @@ workshop:
 
 mailhog:
   name: mailhog
-  image: capi/mailhog
+  image: crapi/mailhog
   webPort: 8025
   smtpPort: 1025
   replicaCount: 1
@@ -263,7 +263,7 @@ postgresdb:
 
 apiGatewayService:
   name: gateway-service
-  image: capi/gateway-service
+  image: crapi/gateway-service
   port: 443
   replicaCount: 1
   service:
