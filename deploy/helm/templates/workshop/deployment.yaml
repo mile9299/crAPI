@@ -21,13 +21,13 @@ spec:
         {{- end }}
     spec:
       initContainers:
-        - name: wait-for-crapi-identity
+        - name: wait-for-capi-identity
           image: {{ .Values.waitForK8sResources.image }}
           imagePullPolicy: {{ .Values.waitForK8sResources.imagePullPolicy }}
           args:
             - "service"
             - {{ .Values.identity.service.name | quote }}
-        - name: wait-for-crapi-community
+        - name: wait-for-capi-community
           image: {{ .Values.waitForK8sResources.image }}
           imagePullPolicy: {{ .Values.waitForK8sResources.imagePullPolicy }}
           args:
