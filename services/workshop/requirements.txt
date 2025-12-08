@@ -1,5 +1,5 @@
 bcrypt==3.1.7
-Django~=3.2.19
+Django~=4.2.27
 cryptography==40.0.2
 django-cors-headers==4.0.0
 django-db-cascade-2==0.3.5
@@ -16,3 +16,5 @@ pymongo==3.12.3
 pyOpenSSL==23.1.1
 requests==2.30.0
 Werkzeug==2.0.3
+sqlparse>=0.5.4 # not directly required, pinned by Snyk to avoid a vulnerability
+urllib3>=2.6.0 # not directly required, pinned by Snyk to avoid a vulnerability
